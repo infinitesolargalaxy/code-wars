@@ -21,52 +21,51 @@ Testing: [1, 0, 1, 1] ==> 11
 However, the arrays can have varying lengths, not just limited to 4.
 */
 
-const chai = require("chai");
-const assert = chai.assert;
+const chai = require('chai');
 
-const binaryArrayToNumber = arr => {
-    // iterate from right to left
-    // sum by increasing powers of 2
-    let sumAmount = 1;
-    let sum = 0;
-    for (let i = arr.length - 1; i >= 0; i--) {
-        arr[i] === 1 ? sum += sumAmount : false;
-        sumAmount *= 2;
-    }
-    return sum;
+const { assert } = chai;
+
+const binaryArrayToNumber = (arr) => {
+  // iterate from right to left
+  // sum by increasing powers of 2
+  let sumAmount = 1;
+  let sum = 0;
+  for (let i = arr.length - 1; i >= 0; i--) {
+    arr[i] === 1 ? sum += sumAmount : false;
+    sumAmount *= 2;
+  }
+  return sum;
 };
 
 describe("One's and Zero's", () => {
+  it('Example tests', () => {
+    assert.strictEqual(binaryArrayToNumber([0, 0, 0, 1]), 1);
+    assert.strictEqual(binaryArrayToNumber([0, 0, 1, 0]), 2);
+    assert.strictEqual(binaryArrayToNumber([0, 1, 0, 1]), 5);
+    assert.strictEqual(binaryArrayToNumber([1, 0, 0, 1]), 9);
+    assert.strictEqual(binaryArrayToNumber([0, 0, 1, 0]), 2);
+    assert.strictEqual(binaryArrayToNumber([0, 1, 1, 0]), 6);
+    assert.strictEqual(binaryArrayToNumber([1, 1, 1, 1]), 15);
+    assert.strictEqual(binaryArrayToNumber([1, 0, 1, 1]), 11);
+  });
 
-    it("Example tests", () => {
-        assert.strictEqual(binaryArrayToNumber([0,0,0,1]), 1);
-        assert.strictEqual(binaryArrayToNumber([0,0,1,0]), 2);
-        assert.strictEqual(binaryArrayToNumber([0,1,0,1]), 5);
-        assert.strictEqual(binaryArrayToNumber([1,0,0,1]), 9);
-        assert.strictEqual(binaryArrayToNumber([0,0,1,0]), 2);
-        assert.strictEqual(binaryArrayToNumber([0,1,1,0]), 6);
-        assert.strictEqual(binaryArrayToNumber([1,1,1,1]), 15);
-        assert.strictEqual(binaryArrayToNumber([1,0,1,1]), 11);
-
-    });
-
-    it("Random tests", () => {
-        function solution(arr) {
-            let sum = 0;
-            let sumAmount = 1;
-            for (let i = arr.length - 1; i >= 0; i--) {
-                arr[i] === 1 ? sum += sumAmount : false;
-                sumAmount *= 2;
-            }
-            return sum;
-        }
-        for (let i = 0; i < 100; i++) {
-            let arr = [];
-            let length = Math.floor(Math.random() * 10);
-            for (let j = 0; j < length; j++) {
-                arr.push(Math.floor(Math.random() * 2));
-            }
-            assert.strictEqual(binaryArrayToNumber(arr), solution(arr));
-        }
-    });
+  it('Random tests', () => {
+    function solution(arr) {
+      let sum = 0;
+      let sumAmount = 1;
+      for (let i = arr.length - 1; i >= 0; i--) {
+        arr[i] === 1 ? sum += sumAmount : false;
+        sumAmount *= 2;
+      }
+      return sum;
+    }
+    for (let i = 0; i < 100; i++) {
+      const arr = [];
+      const length = Math.floor(Math.random() * 10);
+      for (let j = 0; j < length; j++) {
+        arr.push(Math.floor(Math.random() * 2));
+      }
+      assert.strictEqual(binaryArrayToNumber(arr), solution(arr));
+    }
+  });
 });

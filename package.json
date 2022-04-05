@@ -4,7 +4,8 @@
   "description": "Records of the Code Wars.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "eslint --fix ./*-kyu/*"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,10 @@
   "homepage": "https://github.com/infinitesolargalaxy/code-wars#readme",
   "devDependencies": {
     "chai": "^4.3.6",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-mocha": "^10.0.3",
     "mocha": "^9.2.2"
   }
 }
