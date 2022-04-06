@@ -15,6 +15,9 @@ module.exports = {
     'mocha/no-skipped-tests': 'error',
     'mocha/no-exclusive-tests': 'error',
     'mocha/no-mocha-arrows': 'off',
+    'no-use-before-define': 'off',
+    'no-plusplus': 'off',
+    'mocha/max-top-level-suites': 'off',
   },
   plugins: [
     'mocha',

@@ -50,5 +50,5 @@ function removeSmallest(numbers) {
   }
   const smallest = Math.min(...numbers);
   const smallestIndex = numbers.indexOf(smallest);
-  return numbers.filter((num, idx) => idx != smallestIndex);
+  return numbers.filter((num, idx) => idx !== smallestIndex);
 }

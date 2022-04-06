@@ -38,42 +38,12 @@ describe('Fixed tests', () => {
 });
 
 describe('Random tests', () => {
-  function rand(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  function randEven() {
-    let num = rand(1, 1000000);
-    num = num % 2 == 0 ? num : num + 1;
-    const sign = rand(0, 9999999) % 2 ? -1 : 1;
-    return num * sign;
-  }
-
-  function generateEven() {
-    const even = [];
-    for (let i = 0; i < 10; i++) even.push(randEven());
-    return even;
-  }
-
   it('Even tests', () => {
     for (let i = 0; i < 40; i++) {
       const arr = generateEven();
       assert.strictEqual(oddOrEven(arr), 'even');
     }
   });
-
-  function randOdd() {
-    let num = rand(1, 1000000);
-    num = num % 2 == 0 ? num + 1 : num;
-    const sign = rand(0, 9999999) % 2 ? -1 : 1;
-    return num * sign;
-  }
-
-  function generateOdd() {
-    const odd = [randOdd()];
-    for (let i = 0; i < 10; i++) odd.push(randOdd());
-    return odd;
-  }
 
   it('Odd tests', () => {
     for (let i = 0; i < 40; i++) {
@@ -90,6 +60,36 @@ describe('Random tests', () => {
     }
   });
 });
+
+function rand(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function randEven() {
+  let num = rand(1, 1000000);
+  num = num % 2 === 0 ? num : num + 1;
+  const sign = rand(0, 9999999) % 2 ? -1 : 1;
+  return num * sign;
+}
+
+function generateEven() {
+  const even = [];
+  for (let i = 0; i < 10; i++) even.push(randEven());
+  return even;
+}
+
+function randOdd() {
+  let num = rand(1, 1000000);
+  num = num % 2 == 0 ? num + 1 : num;
+  const sign = rand(0, 9999999) % 2 ? -1 : 1;
+  return num * sign;
+}
+
+function generateOdd() {
+  const odd = [randOdd()];
+  for (let i = 0; i < 10; i++) odd.push(randOdd());
+  return odd;
+}
 
 // Handle edge case of empty array
 // Sum array, check if array's value is odd or even
