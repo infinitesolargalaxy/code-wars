@@ -10,4 +10,7 @@ Since Code Wars uses Chai and Mocha, I might as well try out their tests so that
 `npm install`
 
 ### Run Tests
-`npm run test ./fundamentals/*`
+`npm run test ./**/*`
+
+### Run Tests (Typescript only)
+`npm run test ./**/*.test.ts`
