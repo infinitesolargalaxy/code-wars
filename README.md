@@ -13,4 +13,7 @@ Since Code Wars uses Chai and Mocha, I might as well try out their tests so that
 `npm run test ./**/*`
 
 ### Run Tests (Typescript only)
-`npm run test ./**/*.test.ts`
+`npm run test ./ts/**/*.test.ts`
+
+Consult: https://stackoverflow.com/questions/26977722/how-to-run-mocha-tests-written-in-typescript
+- mocha.opts is legacy now!

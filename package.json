@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --require ts-node/register/transpile-only",
-    "lint": "eslint --fix ./*-kyu/*"
+    "lint": "eslint --fix ./**/*-kyu/*"
   },
   "repository": {
     "type": "git",

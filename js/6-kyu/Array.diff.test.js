@@ -10,6 +10,34 @@
 
 const { expect } = require('chai');
 
+function arrayDiff1(a, b) {
+  // Sort a: O(nlogn)
+  a.sort();
+  // Iterate over b
+  const j = 0;
+  for (let i = 0; i < b.length; i++) {
+    while (b[i] === a[j]) {
+      a.remove();
+    }
+  }
+  // While b[i] === a[j], pop from a
+  // Return
+}
+
+// O(n^2)...
+function arrayDiff(a, b) {
+  // Iterate over b, build an object for O(1) check
+  bMap = {};
+  b.forEach((val) => {
+    bMap[val] = true;
+  });
+  function existsInB(val) {
+    return !(val in bMap);
+  }
+  // Iterate over a, check if in hashmap
+  return a.filter(existsInB);
+}
+
 try {
   array_diff([1], [1]);
 } catch (error) {
@@ -65,31 +93,3 @@ describe('Random tests', () => {
     }
   }
 });
-
-function arrayDiff1(a, b) {
-  // Sort a: O(nlogn)
-  a.sort();
-  // Iterate over b
-  const j = 0;
-  for (let i = 0; i < b.length; i++) {
-    while (b[i] === a[j]) {
-      a.remove();
-    }
-  }
-  // While b[i] === a[j], pop from a
-  // Return
-}
-
-// O(n^2)...
-function arrayDiff(a, b) {
-  // Iterate over b, build an object for O(1) check
-  bMap = {};
-  b.forEach((val) => {
-    bMap[val] = true;
-  });
-  function existsInB(val) {
-    return !(val in bMap);
-  }
-  // Iterate over a, check if in hashmap
-  return a.filter(existsInB);
-}
