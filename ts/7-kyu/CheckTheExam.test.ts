@@ -14,7 +14,7 @@
 // checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
 
 // See https://www.chaijs.com for how to use Chai.
-import { assert } from "chai";
+import { assert } from 'chai';
 
 const correctScore = 4;
 const incorrectScore = -1;
@@ -29,11 +29,11 @@ export function checkExam(array1: string[], array2: string[]): number {
   return Math.max(score, 0);
 }
 
-describe("Basic tests", () => {
-  it("Should pass basic tests", () => {
-    assert.equal(checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]), 6);
-    assert.equal(checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]), 7);
-    assert.equal(checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]), 16);
-    assert.equal(checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]), 0);
+describe('Basic tests', () => {
+  it('Should pass basic tests', () => {
+    assert.equal(checkExam(['a', 'a', 'b', 'b'], ['a', 'c', 'b', 'd']), 6);
+    assert.equal(checkExam(['a', 'a', 'c', 'b'], ['a', 'a', 'b', '']), 7);
+    assert.equal(checkExam(['a', 'a', 'b', 'c'], ['a', 'a', 'b', 'c']), 16);
+    assert.equal(checkExam(['b', 'c', 'b', 'a'], ['', 'a', 'a', 'c']), 0);
   });
 });
