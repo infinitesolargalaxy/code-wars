@@ -1,57 +1,22 @@
-// https://www.codewars.com/kata/5827acd5f524dd029d0005a4
-
-// function isRubyComing(list) {
-//   return list.findIndex((coder) => coder.language === 'Ruby') >= 0;
-// }
-
-// function isRubyComing(list) {
-//   return list.some((coder) => coder.language === 'Ruby');
-// }
-
-const isRubyComing = (list) => list.some((coder) => coder.language === 'Ruby');
+// https://www.codewars.com/kata/5827bc50f524dd029d0005f2
+function getFirstPython(list) {
+  const firstPythonCoder = list.find((coder) => coder.language === 'Python');
+  return firstPythonCoder ? `${firstPythonCoder.firstName}, ${firstPythonCoder.country}` : 'There will be no Python developers';
+}
 
 const { assert } = require('chai');
 
-describe('Sample Tests', () => {
-  it('test', () => {
-    const list1 = [
-      {
-        firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java',
-      },
-      {
-        firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python',
-      },
-      {
-        firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby',
-      },
-    ];
-
-    const list2 = [
-      {
-        firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java',
-      },
-      {
-        firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python',
-      },
-    ];
-
-    assert.deepEqual(isRubyComing(list1), true);
-    assert.deepEqual(isRubyComing(list2), false);
-  });
-});
-
 describe('Tests', () => {
   it('test', () => {
-    // =========== TEST CASES ===========
     const list1 = [
       {
-        firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', continent: 'Europe', age: 29, language: 'Ruby',
+        firstName: 'Mark', lastName: 'G.', country: 'Scotland', continent: 'Europe', age: 22, language: 'JavaScript',
       },
       {
-        firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'Javascript',
+        firstName: 'Victoria', lastName: 'T.', country: 'Puerto Rico', continent: 'Americas', age: 30, language: 'Python',
       },
       {
-        firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'JavaScript',
+        firstName: 'Emma', lastName: 'B.', country: 'Norway', continent: 'Europe', age: 19, language: 'Clojure',
       },
     ];
 
@@ -60,13 +25,7 @@ describe('Tests', () => {
         firstName: 'Kseniya', lastName: 'T.', country: 'Belarus', continent: 'Europe', age: 29, language: 'JavaScript',
       },
       {
-        firstName: 'Emma', lastName: 'U.', country: 'Belgium', continent: 'Europe', age: 39, language: 'Python',
-      },
-      {
         firstName: 'Amar', lastName: 'V.', country: 'Bosnia and Herzegovina', continent: 'Europe', age: 32, language: 'Ruby',
-      },
-      {
-        firstName: 'Harry', lastName: 'K.', country: 'Brazil', continent: 'Americas', age: 19, language: 'Python',
       },
     ];
 
@@ -78,7 +37,7 @@ describe('Tests', () => {
         firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'JavaScript',
       },
       {
-        firstName: 'Sou', lastName: 'B.', country: 'Japan', continent: 'Asia', age: 43, language: 'PHP',
+        firstName: 'Sou', lastName: 'B.', country: 'Japan', continent: 'Asia', age: 43, language: 'Python',
       },
       {
         firstName: 'Rimas', lastName: 'C.', country: 'Jordan', continent: 'Asia', age: 44, language: 'Java',
@@ -86,13 +45,13 @@ describe('Tests', () => {
     ];
 
     console.log('List of developers: ', JSON.stringify(list1));
-    assert.deepEqual(isRubyComing(list1), isRubyComingSolution(list1));
+    assert.deepEqual(getFirstPython(list1), getFirstPythonSolution(list1));
 
     console.log('List of developers: ', JSON.stringify(list2));
-    assert.deepEqual(isRubyComing(list2), isRubyComingSolution(list2));
+    assert.deepEqual(getFirstPython(list2), getFirstPythonSolution(list2));
 
     console.log('List of developers: ', JSON.stringify(list3));
-    assert.deepEqual(isRubyComing(list3), isRubyComingSolution(list3));
+    assert.deepEqual(getFirstPython(list3), getFirstPythonSolution(list3));
 
     // ========== RANDOM TEST CASES =========
     // Full list of developers
@@ -402,8 +361,9 @@ describe('Tests', () => {
     }
 
     // Working solution
-    function isRubyComingSolution(list) {
-      return list.some((dev) => dev.language === 'Ruby');
+    function getFirstPythonSolution(list) {
+      const firstPython = list.find((dev) => dev.language === 'Python');
+      return firstPython ? `${firstPython.firstName}, ${firstPython.country}` : 'There will be no Python developers';
     }
 
     // Generate random tests
@@ -415,12 +375,12 @@ describe('Tests', () => {
       shuffleArray(listFullCopy);
 
       // Shorten the array
-      listFullCopy = listFullCopy.slice(0, 4);
+      listFullCopy = listFullCopy.slice(0, 5);
 
       // Log the input for debugging purposes
       console.log(`Random test #${i + 1}, List of developers: 
   ${JSON.stringify(listFullCopy)}`);
-      assert.deepEqual(isRubyComing(listFullCopy), isRubyComingSolution(listFullCopy));
+      assert.deepEqual(getFirstPython(listFullCopy), getFirstPythonSolution(listFullCopy));
     }
   });
 });

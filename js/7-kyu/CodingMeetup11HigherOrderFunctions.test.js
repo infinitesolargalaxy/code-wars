@@ -1,72 +1,25 @@
-// https://www.codewars.com/kata/5827acd5f524dd029d0005a4
-
-// function isRubyComing(list) {
-//   return list.findIndex((coder) => coder.language === 'Ruby') >= 0;
-// }
-
-// function isRubyComing(list) {
-//   return list.some((coder) => coder.language === 'Ruby');
-// }
-
-const isRubyComing = (list) => list.some((coder) => coder.language === 'Ruby');
+// https://www.codewars.com/kata/582ba36cc1901399a70005fc
+function getAverageAge(list) {
+  return Math.round(list.reduce((acc, coder) => acc + coder.age, 0) / list.length);
+}
 
 const { assert } = require('chai');
 
-describe('Sample Tests', () => {
-  it('test', () => {
-    const list1 = [
-      {
-        firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java',
-      },
-      {
-        firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python',
-      },
-      {
-        firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby',
-      },
-    ];
-
-    const list2 = [
-      {
-        firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java',
-      },
-      {
-        firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python',
-      },
-    ];
-
-    assert.deepEqual(isRubyComing(list1), true);
-    assert.deepEqual(isRubyComing(list2), false);
-  });
-});
-
 describe('Tests', () => {
   it('test', () => {
-    // =========== TEST CASES ===========
+    // ========== FIXED TEST CASES =========
     const list1 = [
       {
-        firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', continent: 'Europe', age: 29, language: 'Ruby',
-      },
-      {
-        firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'Javascript',
-      },
-      {
-        firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'JavaScript',
+        firstName: 'Harry', lastName: 'K.', country: 'Brazil', continent: 'Americas', age: 19, language: 'Python',
       },
     ];
 
     const list2 = [
       {
-        firstName: 'Kseniya', lastName: 'T.', country: 'Belarus', continent: 'Europe', age: 29, language: 'JavaScript',
-      },
-      {
-        firstName: 'Emma', lastName: 'U.', country: 'Belgium', continent: 'Europe', age: 39, language: 'Python',
+        firstName: 'Kseniya', lastName: 'T.', country: 'Belarus', continent: 'Europe', age: 29, language: 'Ruby',
       },
       {
         firstName: 'Amar', lastName: 'V.', country: 'Bosnia and Herzegovina', continent: 'Europe', age: 32, language: 'Ruby',
-      },
-      {
-        firstName: 'Harry', lastName: 'K.', country: 'Brazil', continent: 'Americas', age: 19, language: 'Python',
       },
     ];
 
@@ -75,24 +28,48 @@ describe('Tests', () => {
         firstName: 'Sofia', lastName: 'P.', country: 'Italy', continent: 'Europe', age: 41, language: 'Clojure',
       },
       {
-        firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'JavaScript',
+        firstName: 'Kseniya', lastName: 'T.', country: 'Belarus', continent: 'Europe', age: 29, language: 'JavaScript',
       },
       {
-        firstName: 'Sou', lastName: 'B.', country: 'Japan', continent: 'Asia', age: 43, language: 'PHP',
+        firstName: 'Jing', lastName: 'X.', country: 'China', continent: 'Asia', age: 39, language: 'Ruby',
       },
       {
-        firstName: 'Rimas', lastName: 'C.', country: 'Jordan', continent: 'Asia', age: 44, language: 'Java',
+        firstName: 'Noa', lastName: 'A.', country: 'Israel', continent: 'Asia', age: 40, language: 'Ruby',
+      },
+      {
+        firstName: 'Andrei', lastName: 'E.', country: 'Romania', continent: 'Europe', age: 59, language: 'C',
+      },
+      {
+        firstName: 'Maria', lastName: 'S.', country: 'Peru', continent: 'Americas', age: 60, language: 'C',
+      },
+      {
+        firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 75, language: 'Python',
+      },
+      {
+        firstName: 'Chloe', lastName: 'K.', country: 'Guernsey', continent: 'Europe', age: 88, language: 'Ruby',
+      },
+      {
+        firstName: 'Viktoria', lastName: 'W.', country: 'Bulgaria', continent: 'Europe', age: 98, language: 'PHP',
+      },
+      {
+        firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'JavaScript',
       },
     ];
 
-    console.log('List of developers: ', JSON.stringify(list1));
-    assert.deepEqual(isRubyComing(list1), isRubyComingSolution(list1));
+    console.log('List of developers: ', `${JSON.stringify(list1)}`);
+    const expected1 = getAverageAgeSolution(list1);
+    const actual1 = getAverageAge(list1);
+    assert.deepEqual(actual1, expected1);
 
-    console.log('List of developers: ', JSON.stringify(list2));
-    assert.deepEqual(isRubyComing(list2), isRubyComingSolution(list2));
+    console.log('List of developers: ', `${JSON.stringify(list2)}`);
+    const expected2 = getAverageAgeSolution(list2);
+    const actual2 = getAverageAge(list2);
+    assert.deepEqual(actual2, expected2);
 
-    console.log('List of developers: ', JSON.stringify(list3));
-    assert.deepEqual(isRubyComing(list3), isRubyComingSolution(list3));
+    console.log('List of developers: ', `${JSON.stringify(list3)}`);
+    const expected3 = getAverageAgeSolution(list3);
+    const actual3 = getAverageAge(list3);
+    assert.deepEqual(actual3, expected3);
 
     // ========== RANDOM TEST CASES =========
     // Full list of developers
@@ -110,13 +87,13 @@ describe('Tests', () => {
         firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java',
       },
       {
-        firstName: 'Nareh', lastName: 'Q.', country: 'Armenia', continent: 'Europe', age: 30, language: 'Clojure',
+        firstName: 'Nareh', lastName: 'Q.', country: 'Armenia', continent: 'Europe', age: 80, language: 'Clojure',
       },
       {
         firstName: 'Daniel', lastName: 'J.', country: 'Aruba', continent: 'Americas', age: 42, language: 'JavaScript',
       },
       {
-        firstName: 'Oliver', lastName: 'Q.', country: 'Australia', continent: 'Oceania', age: 19, language: 'PHP',
+        firstName: 'Oliver', lastName: 'Q.', country: 'Australia', continent: 'Oceania', age: 69, language: 'PHP',
       },
       {
         firstName: 'Lukas', lastName: 'R.', country: 'Austria', continent: 'Europe', age: 89, language: 'C',
@@ -137,7 +114,7 @@ describe('Tests', () => {
         firstName: 'Harry', lastName: 'K.', country: 'Brazil', continent: 'Americas', age: 19, language: 'Python',
       },
       {
-        firstName: 'Viktoria', lastName: 'W.', country: 'Bulgaria', continent: 'Europe', age: 28, language: 'PHP',
+        firstName: 'Viktoria', lastName: 'W.', country: 'Bulgaria', continent: 'Europe', age: 98, language: 'PHP',
       },
       {
         firstName: 'Thomas', lastName: 'L.', country: 'Canada', continent: 'Americas', age: 38, language: 'Java',
@@ -152,7 +129,7 @@ describe('Tests', () => {
         firstName: 'Marian', lastName: 'N.', country: 'Colombia', continent: 'Americas', age: 55, language: 'Python',
       },
       {
-        firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python',
+        firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 75, language: 'Python',
       },
       {
         firstName: 'Maria', lastName: 'Y.', country: 'Cyprus', continent: 'Europe', age: 30, language: 'Java',
@@ -197,7 +174,7 @@ describe('Tests', () => {
         firstName: 'Malik', lastName: 'J.', country: 'Greenland', continent: 'Europe', age: 19, language: 'Python',
       },
       {
-        firstName: 'Chloe', lastName: 'K.', country: 'Guernsey', continent: 'Europe', age: 28, language: 'Ruby',
+        firstName: 'Chloe', lastName: 'K.', country: 'Guernsey', continent: 'Europe', age: 88, language: 'Ruby',
       },
       {
         firstName: 'Stevenson', lastName: 'O.', country: 'Haiti', continent: 'Americas', age: 22, language: 'Ruby',
@@ -215,7 +192,7 @@ describe('Tests', () => {
         firstName: 'Fatemeh', lastName: 'Z.', country: 'Iran', continent: 'Asia', age: 29, language: 'Java',
       },
       {
-        firstName: 'Emily', lastName: 'N.', country: 'Ireland', continent: 'Europe', age: 38, language: 'Ruby',
+        firstName: 'Emily', lastName: 'N.', country: 'Ireland', continent: 'Europe', age: 98, language: 'Ruby',
       },
       {
         firstName: 'Joshua', lastName: 'O.', country: 'Isle of Man', continent: 'Europe', age: 39, language: 'Clojure',
@@ -224,7 +201,7 @@ describe('Tests', () => {
         firstName: 'Noa', lastName: 'A.', country: 'Israel', continent: 'Asia', age: 40, language: 'Ruby',
       },
       {
-        firstName: 'Sofia', lastName: 'P.', country: 'Italy', continent: 'Europe', age: 41, language: 'Clojure',
+        firstName: 'Sofia', lastName: 'P.', country: 'Italy', continent: 'Europe', age: 71, language: 'Clojure',
       },
       {
         firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'JavaScript',
@@ -260,7 +237,7 @@ describe('Tests', () => {
         firstName: 'Mamadou', lastName: 'E.', country: 'Mali', continent: 'Africa', age: 22, language: 'Python',
       },
       {
-        firstName: 'Luke', lastName: 'V.', country: 'Malta', continent: 'Europe', age: 29, language: 'PHP',
+        firstName: 'Luke', lastName: 'V.', country: 'Malta', continent: 'Europe', age: 129, language: 'PHP',
       },
       {
         firstName: 'Ximena', lastName: 'Q.', country: 'Mexico', continent: 'Americas', age: 28, language: 'Java',
@@ -269,7 +246,7 @@ describe('Tests', () => {
         firstName: 'Sofia', lastName: 'W.', country: 'Moldova', continent: 'Europe', age: 29, language: 'Ruby',
       },
       {
-        firstName: 'Gabriel', lastName: 'X.', country: 'Monaco', continent: 'Europe', age: 29, language: 'PHP',
+        firstName: 'Gabriel', lastName: 'X.', country: 'Monaco', continent: 'Europe', age: 79, language: 'PHP',
       },
       {
         firstName: 'Odval', lastName: 'F.', country: 'Mongolia', continent: 'Asia', age: 38, language: 'Python',
@@ -278,10 +255,10 @@ describe('Tests', () => {
         firstName: 'Sara', lastName: 'Y.', country: 'Montenegro', continent: 'Europe', age: 39, language: 'C',
       },
       {
-        firstName: 'Mohamed', lastName: 'F.', country: 'Morocco', continent: 'Africa', age: 40, language: 'Ruby',
+        firstName: 'Mohamed', lastName: 'F.', country: 'Morocco', continent: 'Africa', age: 90, language: 'Ruby',
       },
       {
-        firstName: 'Krishna', lastName: 'G.', country: 'Nepal', continent: 'Asia', age: 22, language: 'Java',
+        firstName: 'Krishna', lastName: 'G.', country: 'Nepal', continent: 'Asia', age: 112, language: 'Java',
       },
       {
         firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', continent: 'Europe', age: 29, language: 'Ruby',
@@ -296,40 +273,40 @@ describe('Tests', () => {
         firstName: 'Emma', lastName: 'B.', country: 'Norway', continent: 'Europe', age: 19, language: 'Clojure',
       },
       {
-        firstName: 'Fatima', lastName: 'H.', country: 'Pakistan', continent: 'Asia', age: 28, language: 'JavaScript',
+        firstName: 'Fatima', lastName: 'H.', country: 'Pakistan', continent: 'Asia', age: 8, language: 'JavaScript',
       },
       {
-        firstName: 'Ramón', lastName: 'R.', country: 'Paraguay', continent: 'Americas', age: 29, language: 'Ruby',
+        firstName: 'Ramon', lastName: 'R.', country: 'Paraguay', continent: 'Americas', age: 99, language: 'Ruby',
       },
       {
-        firstName: 'Maria', lastName: 'S.', country: 'Peru', continent: 'Americas', age: 30, language: 'C',
+        firstName: 'Maria', lastName: 'S.', country: 'Peru', continent: 'Americas', age: 60, language: 'C',
       },
       {
-        firstName: 'Althea', lastName: 'I.', country: 'Philippines', continent: 'Asia', age: 31, language: 'Python',
+        firstName: 'Althea', lastName: 'I.', country: 'Philippines', continent: 'Asia', age: 81, language: 'Python',
       },
       {
-        firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'Javascript',
+        firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'JavaScript',
       },
       {
-        firstName: 'Joao', lastName: 'D.', country: 'Portugal', continent: 'Europe', age: 35, language: 'JavaScript',
+        firstName: 'Joao', lastName: 'D.', country: 'Portugal', continent: 'Europe', age: 65, language: 'JavaScript',
       },
       {
-        firstName: 'Victoria', lastName: 'T.', country: 'Puerto Rico', continent: 'Americas', age: 30, language: 'Python',
+        firstName: 'Victoria', lastName: 'T.', country: 'Puerto Rico', continent: 'Americas', age: 70, language: 'Python',
       },
       {
         firstName: 'Marija', lastName: 'U.', country: 'Republic of Macedonia', continent: 'Europe', age: 42, language: 'JavaScript',
       },
       {
-        firstName: 'Andrei', lastName: 'E.', country: 'Romania', continent: 'Europe', age: 19, language: 'C',
+        firstName: 'Andrei', lastName: 'E.', country: 'Romania', continent: 'Europe', age: 59, language: 'C',
       },
       {
         firstName: 'Alexander', lastName: 'F.', country: 'Russia', continent: 'Europe', age: 89, language: 'Java',
       },
       {
-        firstName: 'Fatima', lastName: 'K.', country: 'Saudi Arabia', continent: 'Asia', age: 21, language: 'Clojure',
+        firstName: 'Fatima', lastName: 'K.', country: 'Saudi Arabia', continent: 'Asia', age: 105, language: 'Clojure',
       },
       {
-        firstName: 'Mark', lastName: 'G.', country: 'Scotland', continent: 'Europe', age: 22, language: 'JavaScript',
+        firstName: 'Mark', lastName: 'G.', country: 'Scotland', continent: 'Europe', age: 52, language: 'JavaScript',
       },
       {
         firstName: 'Nikola', lastName: 'H.', country: 'Serbia', continent: 'Europe', age: 29, language: 'Python',
@@ -338,7 +315,7 @@ describe('Tests', () => {
         firstName: 'Jakub', lastName: 'I.', country: 'Slovakia', continent: 'Europe', age: 28, language: 'Java',
       },
       {
-        firstName: 'Luka', lastName: 'J.', country: 'Slovenia', continent: 'Europe', age: 29, language: 'Clojure',
+        firstName: 'Luka', lastName: 'J.', country: 'Slovenia', continent: 'Europe', age: 39, language: 'Clojure',
       },
       {
         firstName: 'Precious', lastName: 'G.', country: 'South Africa', continent: 'Africa', age: 22, language: 'JavaScript',
@@ -377,16 +354,13 @@ describe('Tests', () => {
         firstName: 'Mohammad', lastName: 'N.', country: 'United Arab Emirates', continent: 'Asia', age: 39, language: 'C',
       },
       {
-        firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby',
-      },
-      {
         firstName: 'Agustin', lastName: 'V.', country: 'Uruguay', continent: 'Americas', age: 19, language: 'JavaScript',
       },
       {
-        firstName: 'Sebastian', lastName: 'W.', country: 'Venezuela', continent: 'Americas', age: 28, language: 'Python',
+        firstName: 'Sebastian', lastName: 'W.', country: 'Venezuela', continent: 'Americas', age: 8, language: 'Python',
       },
       {
-        firstName: 'Oliver', lastName: 'P.', country: 'Wales', continent: 'Europe', age: 29, language: 'JavaScript',
+        firstName: 'Oliver', lastName: 'P.', country: 'Wales', continent: 'Europe', age: 69, language: 'JavaScript',
       },
     ];
 
@@ -402,25 +376,32 @@ describe('Tests', () => {
     }
 
     // Working solution
-    function isRubyComingSolution(list) {
-      return list.some((dev) => dev.language === 'Ruby');
+    function getAverageAgeSolution(list) {
+      return Math.round(list.reduce((accu, curr) => accu + curr.age, 0) / list.length);
     }
 
-    // Generate random tests
-    for (let i = 0; i < 20; i++) {
-      // Copy the array
-      let listFullCopy = listFull.slice();
+    // Generate random tests using a self-invoking function
+    (function () {
+      for (let i = 0; i < 20; i++) {
+        // Copy the array
+        let listFullCopy = listFull.slice();
 
-      // Shuffle the array
-      shuffleArray(listFullCopy);
+        // Shuffle the array
+        shuffleArray(listFullCopy);
 
-      // Shorten the array
-      listFullCopy = listFullCopy.slice(0, 4);
+        // Shorten the array
+        listFullCopy = listFullCopy.slice(0, 10);
 
-      // Log the input for debugging purposes
-      console.log(`Random test #${i + 1}, List of developers: 
-  ${JSON.stringify(listFullCopy)}`);
-      assert.deepEqual(isRubyComing(listFullCopy), isRubyComingSolution(listFullCopy));
-    }
+        // Log the input for debugging purposes
+        console.log(`Random test #${i + 1}, List of developers: 
+    ${JSON.stringify(listFullCopy)}`);
+
+        // Make an assertion
+        // const listFullCopyClone = JSON.parse(JSON.stringify(listFullCopy));
+        const expected = getAverageAgeSolution(listFullCopy);
+        const actual = getAverageAge(listFullCopy);
+        assert.deepEqual(actual, expected);
+      }
+    }());
   });
 });

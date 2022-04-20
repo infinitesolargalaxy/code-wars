@@ -1,57 +1,27 @@
-// https://www.codewars.com/kata/5827acd5f524dd029d0005a4
+// https://www.codewars.com/kata/5828713ed04efde70e000346/train/javascript
 
-// function isRubyComing(list) {
-//   return list.findIndex((coder) => coder.language === 'Ruby') >= 0;
-// }
-
-// function isRubyComing(list) {
-//   return list.some((coder) => coder.language === 'Ruby');
-// }
-
-const isRubyComing = (list) => list.some((coder) => coder.language === 'Ruby');
+function countLanguages(list) {
+  const countMap = {};
+  list.forEach((coder) => {
+    const { language } = coder;
+    language in countMap ? countMap[language] += 1 : countMap[language] = 1;
+  });
+  return countMap;
+}
 
 const { assert } = require('chai');
 
-describe('Sample Tests', () => {
-  it('test', () => {
-    const list1 = [
-      {
-        firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java',
-      },
-      {
-        firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python',
-      },
-      {
-        firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby',
-      },
-    ];
-
-    const list2 = [
-      {
-        firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java',
-      },
-      {
-        firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python',
-      },
-    ];
-
-    assert.deepEqual(isRubyComing(list1), true);
-    assert.deepEqual(isRubyComing(list2), false);
-  });
-});
-
 describe('Tests', () => {
   it('test', () => {
-    // =========== TEST CASES ===========
     const list1 = [
       {
-        firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', continent: 'Europe', age: 29, language: 'Ruby',
+        firstName: 'Mark', lastName: 'G.', country: 'Scotland', continent: 'Europe', age: 22, language: 'JavaScript',
       },
       {
-        firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'Javascript',
+        firstName: 'Victoria', lastName: 'T.', country: 'Puerto Rico', continent: 'Americas', age: 30, language: 'Python',
       },
       {
-        firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'JavaScript',
+        firstName: 'Emma', lastName: 'B.', country: 'Norway', continent: 'Europe', age: 19, language: 'Clojure',
       },
     ];
 
@@ -60,13 +30,7 @@ describe('Tests', () => {
         firstName: 'Kseniya', lastName: 'T.', country: 'Belarus', continent: 'Europe', age: 29, language: 'JavaScript',
       },
       {
-        firstName: 'Emma', lastName: 'U.', country: 'Belgium', continent: 'Europe', age: 39, language: 'Python',
-      },
-      {
         firstName: 'Amar', lastName: 'V.', country: 'Bosnia and Herzegovina', continent: 'Europe', age: 32, language: 'Ruby',
-      },
-      {
-        firstName: 'Harry', lastName: 'K.', country: 'Brazil', continent: 'Americas', age: 19, language: 'Python',
       },
     ];
 
@@ -78,21 +42,63 @@ describe('Tests', () => {
         firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'JavaScript',
       },
       {
-        firstName: 'Sou', lastName: 'B.', country: 'Japan', continent: 'Asia', age: 43, language: 'PHP',
+        firstName: 'Sou', lastName: 'B.', country: 'Japan', continent: 'Asia', age: 43, language: 'Python',
       },
       {
         firstName: 'Rimas', lastName: 'C.', country: 'Jordan', continent: 'Asia', age: 44, language: 'Java',
       },
     ];
 
+    const list4 = [
+      {
+        firstName: 'Alexander', lastName: 'F.', country: 'Russia', continent: 'Europe', age: 89, language: 'Java',
+      },
+      {
+        firstName: 'Fatima', lastName: 'K.', country: 'Saudi Arabia', continent: 'Asia', age: 21, language: 'Clojure',
+      },
+      {
+        firstName: 'Mark', lastName: 'G.', country: 'Scotland', continent: 'Europe', age: 22, language: 'JavaScript',
+      },
+      {
+        firstName: 'Nikola', lastName: 'H.', country: 'Serbia', continent: 'Europe', age: 29, language: 'Python',
+      },
+      {
+        firstName: 'Jakub', lastName: 'I.', country: 'Slovakia', continent: 'Europe', age: 28, language: 'Java',
+      },
+      {
+        firstName: 'Luka', lastName: 'J.', country: 'Slovenia', continent: 'Europe', age: 29, language: 'Clojure',
+      },
+    ];
+
+    const list5 = [
+      {
+        firstName: 'Sumayah', lastName: 'M.', country: 'Tajikistan', continent: 'Asia', age: 30, language: 'Ruby',
+      },
+      {
+        firstName: 'Mehdi', lastName: 'H.', country: 'Tunisia', continent: 'Africa', age: 42, language: 'Python',
+      },
+      {
+        firstName: 'Yusuf', lastName: 'N.', country: 'Turkey', continent: 'Europe', age: 22, language: 'Python',
+      },
+      {
+        firstName: 'Artem', lastName: 'O.', country: 'Ukraine', continent: 'Europe', age: 29, language: 'Java',
+      },
+    ];
+
     console.log('List of developers: ', JSON.stringify(list1));
-    assert.deepEqual(isRubyComing(list1), isRubyComingSolution(list1));
+    assert.deepEqual(countLanguages(list1), countLanguagesSolution(list1));
 
     console.log('List of developers: ', JSON.stringify(list2));
-    assert.deepEqual(isRubyComing(list2), isRubyComingSolution(list2));
+    assert.deepEqual(countLanguages(list2), countLanguagesSolution(list2));
 
     console.log('List of developers: ', JSON.stringify(list3));
-    assert.deepEqual(isRubyComing(list3), isRubyComingSolution(list3));
+    assert.deepEqual(countLanguages(list3), countLanguagesSolution(list3));
+
+    console.log('List of developers: ', JSON.stringify(list4));
+    assert.deepEqual(countLanguages(list4), countLanguagesSolution(list4));
+
+    console.log('List of developers: ', JSON.stringify(list5));
+    assert.deepEqual(countLanguages(list5), countLanguagesSolution(list5));
 
     // ========== RANDOM TEST CASES =========
     // Full list of developers
@@ -299,7 +305,7 @@ describe('Tests', () => {
         firstName: 'Fatima', lastName: 'H.', country: 'Pakistan', continent: 'Asia', age: 28, language: 'JavaScript',
       },
       {
-        firstName: 'Ramón', lastName: 'R.', country: 'Paraguay', continent: 'Americas', age: 29, language: 'Ruby',
+        firstName: 'Ramon', lastName: 'R.', country: 'Paraguay', continent: 'Americas', age: 29, language: 'Ruby',
       },
       {
         firstName: 'Maria', lastName: 'S.', country: 'Peru', continent: 'Americas', age: 30, language: 'C',
@@ -308,7 +314,7 @@ describe('Tests', () => {
         firstName: 'Althea', lastName: 'I.', country: 'Philippines', continent: 'Asia', age: 31, language: 'Python',
       },
       {
-        firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'Javascript',
+        firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'JavaScript',
       },
       {
         firstName: 'Joao', lastName: 'D.', country: 'Portugal', continent: 'Europe', age: 35, language: 'JavaScript',
@@ -402,8 +408,10 @@ describe('Tests', () => {
     }
 
     // Working solution
-    function isRubyComingSolution(list) {
-      return list.some((dev) => dev.language === 'Ruby');
+    function countLanguagesSolution(list) {
+      const langCount = {};
+      list.forEach((dev) => langCount[dev.language] = langCount[dev.language] ? langCount[dev.language] + 1 : 1);
+      return langCount;
     }
 
     // Generate random tests
@@ -415,12 +423,12 @@ describe('Tests', () => {
       shuffleArray(listFullCopy);
 
       // Shorten the array
-      listFullCopy = listFullCopy.slice(0, 4);
+      listFullCopy = listFullCopy.slice(0, 10);
 
       // Log the input for debugging purposes
       console.log(`Random test #${i + 1}, List of developers: 
   ${JSON.stringify(listFullCopy)}`);
-      assert.deepEqual(isRubyComing(listFullCopy), isRubyComingSolution(listFullCopy));
+      assert.deepEqual(countLanguages(listFullCopy), countLanguagesSolution(listFullCopy));
     }
   });
 });
