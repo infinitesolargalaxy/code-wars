@@ -29,6 +29,7 @@ module.exports = {
     'space-in-parens': 'error',
     'no-multiple-empty-lines': 'error',
     'prefer-const': 'error',
+    'max-len': 'warn',
   },
   plugins: [
     'mocha',
