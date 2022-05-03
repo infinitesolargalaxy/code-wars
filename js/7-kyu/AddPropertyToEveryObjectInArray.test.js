@@ -1,4 +1,6 @@
 // https://www.codewars.com/kata/54e8c3e89e2ae6f4900005a1/train/javascript
+import { assert } from 'chai';
+
 const questions = [{
   question: "What's the currency of the USA?",
   choices: ['US dollar', 'Ruble', 'Horses', 'Gold'],
@@ -9,20 +11,29 @@ const questions = [{
   corAnswer: 0,
 }];
 
-questions.forEach((question, idx) => {
-  question.usersAnswer = null;
-});
-
-const { assert } = require('chai');
+/**
+ * @param {any[]} q
+ */
+function addProperty(q) {
+  q.forEach((question) => {
+    // eslint-disable-next-line no-param-reassign
+    question.usersAnswer = null;
+  });
+}
 
 describe('Tests', () => {
   it('test', () => {
-    assert.equal(questions[0].usersAnswer === null);
+    addProperty(questions);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    assert.equal(questions[0].usersAnswer, null);
     questions.forEach((i) => {
-      assert.equal(i.usersAnswer === null, 'Should have usersAnswer property set to null');
-      assert.equal(Object.keys(i).length === 5, 'The number of properties is not what is expected');
-      assert.equal(i.hasOwnProperty('usersAnswer'), 'Should have own property "usersAnswer"');
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      assert.equal(i.usersAnswer, null, 'Should have usersAnswer property set to null');
+      assert.equal(Object.keys(i).length, 4, 'The number of properties is not what is expected');
+      assert.equal(i.hasOwnProperty('usersAnswer'), true, 'Should have own property "usersAnswer"');
     });
-    assert.equal(questions.length === 11, 'The length of the array should not be modified');
+    assert.equal(questions.length, 2, 'The length of the array should not be modified');
   });
 });

@@ -94,7 +94,13 @@ describe('random tests', () => {
   function isSortedAndHowSol(array:number[]):string {
     const asc = array.slice(); asc.sort((a, b) => a - b);
     const desc = array.slice(); desc.sort((a, b) => b - a);
-    return shallowEquals(array, asc) ? 'yes, ascending' : shallowEquals(array, desc) ? 'yes, descending' : 'no';
+    if (shallowEquals(array, asc)) {
+      return 'yes, ascending';
+    }
+    if (shallowEquals(array, desc)) {
+      return 'yes, descending';
+    }
+    return 'no';
   }
 
   function shallowEquals(a1:number[], a2:number[]) : boolean {

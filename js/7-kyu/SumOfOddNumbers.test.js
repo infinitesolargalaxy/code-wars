@@ -27,7 +27,6 @@ function rowSumOddNumbers(n) {
   for (let i = 1; i < n; i++) {
     numOne += 2 * (n - i);
   }
-  //   console.log(numOne);
 
   // There are n numbers: numOne, numOne + 2, ..., numOne + 2(n - 1)
   let sum = 0;
@@ -36,5 +35,4 @@ function rowSumOddNumbers(n) {
     numOne += 2;
   }
   return sum;
-//   console.log(sum);
 }

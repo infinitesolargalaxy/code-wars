@@ -10,8 +10,12 @@
 //   return phoneNumber;
 // }
 
+import chai, { config } from 'chai';
+/**
+ * @param {string | any[]} numbers
+ */
 function createPhoneNumber(numbers) {
-  const format = '(xxx) xxx-xxxx';
+  let format = '(xxx) xxx-xxxx';
 
   for (let i = 0; i < numbers.length; i++) {
     format = format.replace('x', numbers[i]);
@@ -20,10 +24,8 @@ function createPhoneNumber(numbers) {
   return format;
 }
 
-const chai = require('chai');
-
 const { assert } = chai;
-chai.config.truncateThreshold = 0;
+config.truncateThreshold = 0;
 
 describe('Create Phone Number', () => {
   it('Fixed tests', () => {
@@ -33,7 +35,7 @@ describe('Create Phone Number', () => {
   });
 
   it('Random tests', () => {
-    const sol = (a) => `(${a.slice(0, 3).join('')}) ${a.slice(3, 6).join('')}-${a.slice(6).join('')}`;
+    const sol = (/** @type {any[]} */ a) => `(${a.slice(0, 3).join('')}) ${a.slice(3, 6).join('')}-${a.slice(6).join('')}`;
     for (let i = 0; i < 100; i++) {
       const a = Array.from({ length: 10 }, (_) => Math.floor(Math.random() * 10));
       const exp = sol(a);

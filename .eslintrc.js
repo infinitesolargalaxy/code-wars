@@ -16,6 +16,7 @@ module.exports = {
   rules: {
     'mocha/no-skipped-tests': 'error',
     'mocha/no-exclusive-tests': 'error',
+    'mocha/no-setup-in-describe': 'off',
     'mocha/no-mocha-arrows': 'off',
     'no-use-before-define': 'off',
     'no-plusplus': 'off',
@@ -29,7 +30,9 @@ module.exports = {
     'space-in-parens': 'error',
     'no-multiple-empty-lines': 'error',
     'prefer-const': 'error',
-    'max-len': 'warn',
+    'max-len': 'off',
+    'no-bitwise': 'off',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/**/*.test.ts', '**/**/*.test.js'] }],
   },
   plugins: [
     'mocha',

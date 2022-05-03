@@ -38,38 +38,38 @@ function arrayDiff(a, b) {
   return a.filter(existsInB);
 }
 
-try {
-  array_diff([1], [1]);
-} catch (error) {
-  array_diff = arrayDiff;
-}
+// try {
+//   arrayDiff([1], [1]);
+// } catch (error) {
+//   arrayDiff = arrayDiff;
+// }
 
 describe('Basic tests', () => {
   it('Should pass Basic tests', () => {
-    expect(array_diff([1, 2], [1])).to.deep.equal([2], 'a was [1,2], b was [1]');
+    expect(arrayDiff([1, 2], [1])).to.deep.equal([2], 'a was [1,2], b was [1]');
     // What the hell is this? Test.assertDeepEquals
     // Deprecated Code wars proprietary framework
     // https://docs.codewars.com/languages/javascript/codewars-test/
 
-    // Test.assertDeepEquals(array_diff([1,2], [1]), [2], "a was [1,2], b was [1]");
-    // Test.assertDeepEquals(array_diff([1,2,2], [1]), [2,2], "a was [1,2,2], b was [1]");
-    // Test.assertDeepEquals(array_diff([1,2,2], [2]), [1], "a was [1,2,2], b was [2]");
-    // Test.assertDeepEquals(array_diff([1,2,2], []), [1,2,2], "a was [1,2,2], b was []");
-    // Test.assertDeepEquals(array_diff([], [1,2]), [], "a was [], b was [1,2]");
+    // Test.assertDeepEquals(arrayDiff([1,2], [1]), [2], "a was [1,2], b was [1]");
+    // Test.assertDeepEquals(arrayDiff([1,2,2], [1]), [2,2], "a was [1,2,2], b was [1]");
+    // Test.assertDeepEquals(arrayDiff([1,2,2], [2]), [1], "a was [1,2,2], b was [2]");
+    // Test.assertDeepEquals(arrayDiff([1,2,2], []), [1,2,2], "a was [1,2,2], b was []");
+    // Test.assertDeepEquals(arrayDiff([], [1,2]), [], "a was [], b was [1,2]");
     // Test.assertDeepEquals(arrayDiff([1,2,3], [1,2]), [3], "a was [1,2,3], b was [1,2]")
   });
 });
 
 describe('Random tests', () => {
-  const array_diff_sol = (a, b) => a.filter((e) => !b.includes(e));
+  const arrayDiff_sol = (a, b) => a.filter((e) => !b.includes(e));
   const generateRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
   // Fisher Yates shuffle
   // CC BY-SA 4.0: https://stackoverflow.com/a/64925682
   const randomize = (points) => {
-    for (i = points.length - 1; i > 0; i--) {
-      j = Math.floor(Math.random() * i);
-      k = points[i];
+    for (let i = points.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * i);
+      const k = points[i];
       points[i] = points[j];
       points[j] = k;
     }
@@ -86,9 +86,9 @@ describe('Random tests', () => {
       b = [...a];
       randomize(b);
       b = b.slice(0, generateRandomInt(0, bLength));
-      expected = array_diff_sol(a, b);
+      expected = arrayDiff_sol(a, b);
       it(`Testing for arrayDiff([${a}],[${b}])`, () => {
-        expect(array_diff(a, b)).to.deep.equal(expected, 'Should work for random arrays too');
+        expect(arrayDiff(a, b)).to.deep.equal(expected, 'Should work for random arrays too');
       });
     }
   }
