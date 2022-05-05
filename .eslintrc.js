@@ -31,6 +31,7 @@ module.exports = {
     'no-multiple-empty-lines': 'error',
     'prefer-const': 'error',
     'max-len': 'off',
+    'no-continue': 'off',
     'no-bitwise': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/**/*.test.ts', '**/**/*.test.js'] }],
   },
